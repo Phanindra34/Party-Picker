@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyD1vBAg0UlWbGTdzPROIr7Poy__lV3u8aA",
-    authDomain: "party-picker-29feb.firebaseapp.com",
-    databaseURL: "https://party-picker-29feb.firebaseio.com",
-    projectId: "party-picker-29feb",
-    storageBucket: "party-picker-29feb.appspot.com",
-    messagingSenderId: "128576783477"
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: ""
   }
 };
