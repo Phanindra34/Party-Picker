@@ -1,0 +1,9 @@
+.bgimg {
+    background-size: cover;
+    background-image: url("http://mynorthcountrybroadband.com/wp-content/uploads/2017/03/Fotolia_98161746_Subscription_Monthly_M.jpg");
+    min-height: 1000%;
+}
+
+header{
+    margin-top: 5em;
+}

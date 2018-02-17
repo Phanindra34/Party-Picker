@@ -1,0 +1,11 @@
+#shortId,#email {
+    text-transform: lowercase;
+}
+
+#retypePassword.ng-invalid.ng-touched.ng-pristine{
+    border: 1px solid red;
+}
+
+form{
+    margin-top: 5em;
+}
