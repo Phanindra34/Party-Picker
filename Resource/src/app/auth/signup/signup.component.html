@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSignup()" #signinForm="ngForm">
+        <h2>Register</h2>
+        <br>
+        <div class="form-group">
+          <label for="email">Mail</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            #email="ngModel"
+            ngModel 
+            class="form-control"
+            placeholder="shortid@csc.com">
+        </div>
+        <p *ngIf="email.pristine && email.touched">
+          Please provide valid email address
+        </p>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            #password="ngModel" 
+            ngModel
+            class="form-control"
+            pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+            placeholder="atleast one UpperCase, LowerCase, Number/SpecialChar with min 8 Chars">
+        </div>
+        <div class="form-group">
+          <label for="retypePassword">Retype-Password</label>
+          <input
+            type="password"
+            id="retypePassword"
+            name="retypePassword"
+            #retypePassword="ngModel" 
+            ngModel
+            class="form-control"
+            pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+            placeholder="Retype-Password">
+        </div>
+        <div class="form-group">
+          <label for="phonenumber">Phone Number</label>
+          <input
+            type="text"
+            id="phonenumber"
+            name="phonenumber"
+            #phonenumber="ngModel" 
+            ngModel
+            class="form-control"
+            placeholder="Phone Number">
+        </div>
+        <div class="g-recaptcha" data-sitekey="6LcX00sUAAAAAGZctFNsn3YaEi9WkeSapcZxiz2y"></div><br>
+        <button class="btn btn-primary" [disabled]="!phonenumber.valid" (click)="onSendOTP()">Request OTP</button>
+        <div class="form-group">
+          <label for="otp">Enter OTP</label>
+          <input
+            type="number"
+            id="otp"
+            name="otp"
+            #otp="ngModel" 
+            ngModel
+            class="form-control"
+            placeholder="Enter OTP">
+        </div>
+        <p *ngIf="password.pristine && password.touched">
+          Please provide valid password
+        </p>
+        <!-- <br> -->
+        <button class="btn btn-primary" type="submit" [disabled]="!signinForm.valid">Sign Up</button>
+      </form>
+    </div>
+  </div>
+  
+  

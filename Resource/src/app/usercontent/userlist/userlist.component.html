@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row" *ngIf="this.userListService.unPickedUsers.length > 1 && this.userService.currentUser.isAdmin">
+    <div class="col-md-6" >
+      <label for="userToBePicked">Choose number of Users</label>
+      <input type="number" #usersToBePicked="ngModel"
+              [(ngModel)]="this.userListService.usersToBePicked" (keyup)="onKey($event)" min="1" pattern="[^0]+">
+      <p *ngIf="!usersToBePicked.valid && usersToBePicked.touched">Users can't be less than 0</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="header">
+            <h2 *ngIf="this.userListService.unPickedUsers.length > 0">Un-Picked Users</h2>
+        </div>
+          <button class="btn btn-primary" (click)="onResetUsers()" *ngIf="this.userListService.unPickedUsers.length == 0">Reset Users</button>
+      </div>
+      <div class="row">
+        <br>
+        <a
+          style="cursor: pointer;"
+          class="list-group-item clearfix"
+          *ngFor="let user of this.userListService.unPickedUsers; let i = index" (click)="onLoadUserDetails(user)">
+          <div class="pull-left">
+            <h4 class="list-group-item-heading">{{ user.employeename }}</h4>
+            <p>{{ user.shortid }}</p>
+          </div>
+          <!-- <span class="pull-right">
+            <img
+              [src]="user.userProfilePic"
+              alt="{{ user.employeename}}"  
+              class="img-responsive"
+              style="max-height: 50px;">
+          </span> -->
+        </a>
+        <br>
+        <button class="btn btn-primary" [hidden]="pickedUsers === null"
+         *ngIf="this.userListService.unPickedUsers.length > 0 && this.userService.currentUser.isAdmin" 
+            (click)="onShuffle()">Shuffle</button>
+      </div>
+    </div> 
+    <div class="col-md-6">
+      <div class="row">
+          <br>
+          <h2 *ngIf="this.userListService.pickedUsers.length > 0" >Picked Users</h2>
+          <a
+            style="cursor: pointer;"
+            class="list-group-item clearfix"
+            *ngFor="let user of this.userListService.pickedUsers" id="pickedUsers" (click)="onLoadUserDetails(user)">
+            <div class="pull-left">
+              <h4 class="list-group-item-heading" id="employeename">{{ user.employeename }}</h4>
+              <p>{{ user.shortid }}</p>
+            </div>
+            <!-- <span class="pull-right">
+              <img
+                [src]="user.userProfilePic"
+                alt="{{ user.employeename}}"  
+                class="img-responsive"
+                style="max-height: 50px;">
+            </span> -->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+

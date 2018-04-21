@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+        <h2>Login</h2>
+        <br>
+        <div class="form-group">
+          <label for="email">Mail</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            #email="ngModel"
+            ngModel 
+            class="form-control"
+            placeholder="shortid@csc.com">
+        </div>
+        <p *ngIf="email.pristine && email.touched">
+          Please provide valid email address
+        </p>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            #password="ngModel" 
+            ngModel
+            class="form-control"
+            pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+            placeholder="atleast one UpperCase, LowerCase, Number/SpecialChar with min 8 Chars">
+        </div>
+        <p *ngIf="password.pristine && password.touched">
+          Please provide valid password
+        </p>
+        <a routerLink="/forgotpassword">Forgot Password?</a>
+        <br><br>
+        <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Log In</button>
+      </form>
+    </div>
+  </div>
+  
+  

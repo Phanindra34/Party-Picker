@@ -1,0 +1,31 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a routerLink="" routerLinkActive="active" class="navbar-brand">Party Picker</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a routerLink="/userlist" *ngIf="this.authServie.isAuthenticated() && this.userService.canActivateUserList">User List</a></li>
+        <!-- <li><a href="#">Shopping List</a></li> -->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li routerLinkActive="active" *ngIf="!this.authServie.isAuthenticated()"><a routerLink="/login">
+          <span class="glyphicon glyphicon-log-in"></span> 
+          Login</a></li>
+        <li routerLinkActive="active" *ngIf="!this.authServie.isAuthenticated()"><a routerLink="/signup">
+          <span class="glyphicon glyphicon-user"></span>
+           Register</a></li>
+        <li routerLinkActive="active" *ngIf="this.authServie.isAuthenticated()"><a (click)="logout()">
+          <span class="glyphicon glyphicon-log-out"></span>
+           Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
